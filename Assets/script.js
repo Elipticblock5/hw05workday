@@ -1,6 +1,9 @@
  // Adding moment js
 
+ // trying to display todays date
+
  var dateNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+ $("#currentDay").html(dateNow);
  
  
  
