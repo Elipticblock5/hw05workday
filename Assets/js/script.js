@@ -8,6 +8,8 @@
  
   $(document).ready(function () {
 
+    //onclick jquery 
+
 
     $(".saveButton").on("click", function () {
         
@@ -22,6 +24,8 @@
  
     function timeColor() {
         //this gets current number of hours
+        //website to assist https://momentjscom.readthedocs.io/en/latest/moment/02-get-set/04-hour/
+
         var timeNowColor = moment().hour();
 
         console.log(timeNowColor)
@@ -34,21 +38,30 @@
 
             console.log(blockTime)
 
-            // To check the time and add the classes for background indicators
+            // To check the time and add the classes for background indicators, using pre-set CSS on starter code to color and append html
+            // less than to append class to grey
+            // worked with TA during office hours 03/06 for function help 
+            // worked with TA during office hours 03/07 for display to "text area" help
+
+        
             if (blockTime < timeNowColor) {
-                $(this).removeClass("future");
-                $(this).removeClass("present");
-                $(this).addClass("past");
+                $(this).siblings("textarea").removeClass("future");
+                $(this).siblings("textarea").removeClass("present");
+                $(this).siblings("textarea").addClass("past");
             }
+
+            // equal to to append class to red
             else if (blockTime === timeNowColor) {
-                $(this).removeClass("past");
-                $(this).removeClass("future");
-                $(this).addClass("present");
+                $(this).siblings("textarea").removeClass("past");
+                $(this).siblings("textarea").removeClass("future");
+                $(this).siblings("textarea").addClass("present");
             }
+
+            // if any other condition, moves class to future. 
             else {
-                $(this).removeClass("present");
-                $(this).removeClass("past");
-                $(this).addClass("future");
+                $(this).siblings("textarea").removeClass("present");
+                $(this).siblings("textarea").removeClass("past");
+                $(this).siblings("textarea").addClass("future");
 
             }
         })
@@ -69,5 +82,8 @@
  $("#16 .scheduleItems").val(localStorage.getItem("16"));
  $("#17 .scheduleItems").val(localStorage.getItem("17")); 
 
+
+
+ //calling timeColor  function to run
  timeColor ();
 })
